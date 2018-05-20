@@ -1,0 +1,27 @@
+<html>
+    <head></head>
+    <body>
+        
+        <script>
+            const loginURL = `https://secure.meetup.com/oauth2/authorize
+    ?client_id=YOUR_CONSUMER_KEY
+    &response_type=code
+    &redirect_uri=YOUR_CONSUMER_REDIRECT_URI`;
+
+    const url = window.location.href;
+    const regex = /(?:\?|&)(?:([a-zA-Z_]+)=([^&]+))*/g;
+    let matcher;
+    let queryParams = {};
+
+    while(matcher = regex.exec(url)) {
+        const [,key, val] = matcher;
+        queryParams[key] = val;
+    }
+
+    if (queryParams)
+        console.log(queryParams);
+    else
+        window.location.href = loginURL;
+        </script>
+            </body>
+</html>
