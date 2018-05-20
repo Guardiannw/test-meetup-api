@@ -18,7 +18,7 @@
         queryParams[key] = val;
     }
 
-    if (queryParams)
+    if (Object.keys(queryParams).length)
         console.log(queryParams);
     else
         window.location.href = loginURL;
