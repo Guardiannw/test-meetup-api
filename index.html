@@ -20,15 +20,12 @@
 
     if (Object.keys(queryParams).length) {
         // Authenticated
-        const requestURL = 'https://api.meetup.com/2/concierge?&sign=true&photo-host=public&zip=38305&category_id=11&radius=smart'
+        const requestURL = `https://api.meetup.com/2/concierge?access_token=${queryParams.access_token}&zip=38305&category_id=11&radius=smart`
 
         console.log(queryParams);
         $.ajax(requestURL, {
-            dataType: 'json',
-            headers: {
-                'Authorization': `Bearer ${queryParams.access_token}`
-            },
-            complete: function (data) {
+            dataType: 'jsonp',
+            success: function (data) {
                 debugger;
                 console.log(data);
             }
