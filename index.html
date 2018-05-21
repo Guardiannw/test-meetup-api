@@ -1,7 +1,10 @@
 <html>
     <head></head>
     <body>
-        
+            <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script> 
         <script>
             const loginURL = `https://secure.meetup.com/oauth2/authorize?client_id=df773ak352f6trntvjgsvrg3n5&response_type=token&redirect_uri=https://guardiannw.github.io/test-meetup-api/index.html`;
 
@@ -19,9 +22,17 @@
         // Authenticated
         const requestURL = 'https://api.meetup.com/2/concierge?&sign=true&photo-host=public&zip=38305&category_id=11&radius=smart'
 
-
         console.log(queryParams);
-
+        $.ajax(requestURL, {
+            dataType: 'json',
+            headers: {
+                'Authorization': `Bearer ${queryParams.access_token}`
+            },
+            complete: function (data) {
+                debugger;
+                console.log(data);
+            }
+        });
     }
     else
         window.location.href = loginURL;
