@@ -3,7 +3,7 @@
     <body>
         
         <script>
-            const loginURL = `https://secure.meetup.com/oauth2/authorize?client_id=df773ak352f6trntvjgsvrg3n5&response_type=code&redirect_uri=https://guardiannw.github.io/test-meetup-api/index.html`;
+            const loginURL = `https://secure.meetup.com/oauth2/authorize?client_id=df773ak352f6trntvjgsvrg3n5&response_type=token&redirect_uri=https://guardiannw.github.io/test-meetup-api/index.html`;
 
     const url = window.location.href;
     const regex = /(?:\?|&)(?:([a-zA-Z_]+)=([^&]+))*/g;
@@ -15,8 +15,14 @@
         queryParams[key] = val;
     }
 
-    if (Object.keys(queryParams).length)
+    if (Object.keys(queryParams).length) {
+        // Authenticated
+        const requestURL = 'https://api.meetup.com/2/concierge?&sign=true&photo-host=public&zip=38305&category_id=11&radius=smart'
+
+
         console.log(queryParams);
+
+    }
     else
         window.location.href = loginURL;
         </script>
